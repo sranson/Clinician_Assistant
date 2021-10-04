@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/soap-note",
+    process.env.MONGODB_URI || "mongodb://localhost/soapnote",
     {
     useNewUrlParser: true,
     useUnifiedTopology: true,

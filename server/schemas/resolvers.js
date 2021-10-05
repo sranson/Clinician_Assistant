@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Client } = require('../models');
 const { signToken } = require('../utils/auth');
 
 
@@ -7,8 +7,24 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find()
-        }
+            return User.find().populate('clients');
+        },
+        user: async (parent, { username }) => {
+            return Client.findOne({ username }).populate('clients');
+        },
+        clients: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Client.find(params);
+        },
+        client: async (parent, { clientId }) => {
+            return Client.findOne({ _id: clientId });
+        },
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id }).populate('clients');
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     },
 
 
@@ -17,8 +33,36 @@ const resolvers = {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+            return { token, user };
+        },
+        addClient: async (parent, { firstName, lastName }, context) => {
+
+                const client = await Client.create({
+                    firstName,
+                    lastName
+                });
+
+                await User.findOneAndUpdate(
+                    { _id: "615b4d478ab54a1a45049688" },
+                    { $addToSet: { clients: client._id } }
+                );
+                return client;
+
+            throw new AuthenticationError('You need to be logged in!');
         }
     }
+    
 };
 
 

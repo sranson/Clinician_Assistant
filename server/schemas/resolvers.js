@@ -14,10 +14,10 @@ const resolvers = {
         },
         clients: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Client.find(params);
+            return Client.find(params)
         },
         client: async (parent, { clientId }) => {
-            return Client.findOne({ _id: clientId });
+            return Client.findOne({ _id: clientId })
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -47,20 +47,20 @@ const resolvers = {
             return { token, user };
         },
         addClient: async (parent, { firstName, lastName }, context) => {
-
+                if (context.user) {
                 const client = await Client.create({
                     firstName,
                     lastName
                 });
 
                 await User.findOneAndUpdate(
-                    { _id: "615b4d478ab54a1a45049688" },
+                    { _id: context.user._id },
                     { $addToSet: { clients: client._id } }
                 );
                 return client;
-
+                }
             throw new AuthenticationError('You need to be logged in!');
-        }
+        },
     }
     
 };

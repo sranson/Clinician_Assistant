@@ -35,7 +35,6 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addClient(firstName: String!, lastName: String): Client
   }
-
 `;
 
 

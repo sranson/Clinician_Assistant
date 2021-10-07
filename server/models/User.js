@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcryt = require('bcrypt');
 
+
 const userSchema = new Schema({
     username: {
         type: String,

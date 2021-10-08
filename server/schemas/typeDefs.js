@@ -14,6 +14,12 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     DOB: String!
+    goals: [Goal]
+  }
+
+  type Goal {
+    _id: ID
+    goalText: String!
   }
 
   type Auth {
@@ -35,6 +41,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addClient(firstName: String!, lastName: String, DOB: String!): Client
+    addGoals(goalText: String!): Goal
   }
 `;
 

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Client } = require('../models');
+const { User, Client, Goal } = require('../models');
 const { signToken } = require('../utils/auth');
 
 
@@ -46,11 +46,12 @@ const resolvers = {
             }
             return { token, user };
         },
-        addClient: async (parent, { firstName, lastName, DOB }, context) => {
+        addClient: async (parent, { firstName, lastName, DOB, goals }, context) => {
                 const client = await Client.create({
                     firstName,
                     lastName,
                     DOB,
+                    goals
                 });
 
                 await User.findOneAndUpdate(
@@ -59,6 +60,14 @@ const resolvers = {
                 );
                 return client;
             throw new AuthenticationError('You need to be logged in!');
+        },
+        addGoals: async (parent, { goalText }, context) => {
+            const goal = await Goal.create({ goalText })
+            await Client.findOneAndUpdate(
+                { _id: '6160a5fe8c20660b9bd7165c'},
+                { $addToSet: { goals: goal._id } }
+            );
+            return goal;
         },
     }
     

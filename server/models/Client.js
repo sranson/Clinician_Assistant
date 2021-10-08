@@ -15,6 +15,10 @@ const clientSchema = new Schema({
         minlength: 3,
         maxlength: 100
     },
+    DOB: {
+        type: Date,
+        required: "Client must have a DOB"
+    }
 }) 
 
 

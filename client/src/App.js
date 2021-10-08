@@ -9,9 +9,10 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Header from './components/Header';
 
-const httpLink = createHttpLink({ 
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
   uri: '/graphql',
- });
+});
 
  // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
@@ -48,7 +49,7 @@ function App() {
                 <Route exact path="/signup">
                   <Signup />
                 </Route>
-                <Route exact path="/dashboard/:username">
+                <Route exact path="/dashboard">
                   <Dashboard />
                 </Route>
             </div>

@@ -24,9 +24,6 @@ mutation login($email: String!, $password: String!){
       _id
       username
       email
-      clients {
-        _id
-      }
     }
   }
 }

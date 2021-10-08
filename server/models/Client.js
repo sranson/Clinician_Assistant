@@ -19,6 +19,12 @@ const clientSchema = new Schema({
         type: Date,
         required: "Client must have a DOB"
     },
+    goals: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Goal'
+        },
+    ]
 }) 
 
 

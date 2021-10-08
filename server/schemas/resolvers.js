@@ -47,7 +47,6 @@ const resolvers = {
             return { token, user };
         },
         addClient: async (parent, { firstName, lastName, DOB }, context) => {
-            if (context.user) {
                 const client = await Client.create({
                     firstName,
                     lastName,
@@ -55,11 +54,10 @@ const resolvers = {
                 });
 
                 await User.findOneAndUpdate(
-                    { _id: '61609874d44a9008e785e1dc' },             
+                    { _id: '6160a0a495818d0a6b0c5b2c' },             
                     { $addToSet: { clients: client._id } }
                 );
                 return client;
-            }
             throw new AuthenticationError('You need to be logged in!');
         },
     }

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require(`dotenv`).config();
 
 mongoose.connect(
-    "mongodb://localhost/soapnote" || process.env.MONGODB_URI,
+    process.env.MONGODB_URI || "mongodb://localhost/soapnote",
     {
     useNewUrlParser: true,
     useUnifiedTopology: true,

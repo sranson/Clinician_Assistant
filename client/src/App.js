@@ -34,29 +34,56 @@ const client = new ApolloClient({
 
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-            <div className="container">
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route exact path="/login">
-                  <Login />
-                </Route>
-                <Route exact path="/signup">
-                  <Signup />
-                </Route>
-                <Route exact path="/dashboard">
-                  <Dashboard />
-                </Route>
+  if (!localStorage.getItem("id_token")) {
+    return (
+        <ApolloProvider client={client}>
+          <Router>
+            <div className="flex-column justify-flex-start min-100-vh">
+              <Header />
+                <div className="container">
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route exact path="/login">
+                      <Login />
+                    </Route>
+                    <Route exact path="/signup">
+                      <Signup />
+                    </Route>
+                    <Route exact path="/dashboard">
+                      <Home />
+                    </Route>
+                </div>
             </div>
-        </div>
-      </Router>
-    </ApolloProvider>
-  );
+          </Router>
+        </ApolloProvider>
+    );
+  } else if (localStorage.getItem("id_token")) {
+    return (
+        <ApolloProvider client={client}>
+          <Router>
+            <div className="flex-column justify-flex-start min-100-vh">
+              <Header />
+                <div className="container">
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route exact path="/login">
+                      <Login />
+                    </Route>
+                    <Route exact path="/signup">
+                      <Signup />
+                    </Route>
+                    <Route exact path="/dashboard">
+                      <Dashboard />
+                    </Route>
+                </div>
+            </div>
+          </Router>
+        </ApolloProvider>
+    );
+  }
+
 }
 
 export default App;

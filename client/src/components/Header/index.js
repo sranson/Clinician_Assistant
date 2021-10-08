@@ -10,7 +10,7 @@ const Header = () => {
   };
   return (
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+      <div className="container flex-row justify-space-between-lg">
         <div>
           <Link className="text-light" to="/">
             <h1 className="m-0">SOAPY</h1>
@@ -22,6 +22,12 @@ const Header = () => {
             <>
               <Link className="btn btn-lg btn-info m-2" to="/dashboard">
                 Dashboard
+              </Link>
+              <Link className="btn btn-lg btn-info m-2" to="/newClient">
+                Add New Client
+              </Link>
+              <Link className="btn btn-lg btn-info m-2" to="/createsoap">
+                Create SOAP Note
               </Link>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout

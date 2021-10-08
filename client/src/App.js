@@ -3,11 +3,13 @@ import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apo
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import Header from './components/Header';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import Header from './components/Header';
+import NewClient from './pages/NewClient';
+import CreateSoap from './pages/CreateSOAP';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -70,6 +72,12 @@ function App() {
                     </Route>
                     <Route exact path="/dashboard">
                       <Dashboard />
+                    </Route>
+                    <Route exact path="/newClient">
+                      <NewClient />
+                    </Route>
+                    <Route exact path="/createsoap">
+                      <CreateSoap />
                     </Route>
                 </div>
             </div>

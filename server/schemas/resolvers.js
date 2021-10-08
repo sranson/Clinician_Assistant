@@ -47,6 +47,7 @@ const resolvers = {
             return { token, user };
         },
         addClient: async (parent, { firstName, lastName, DOB, goals }, context) => {
+            if (context.user) {
                 const client = await Client.create({
                     firstName,
                     lastName,
@@ -55,19 +56,23 @@ const resolvers = {
                 });
 
                 await User.findOneAndUpdate(
-                    { _id: '6160a0a495818d0a6b0c5b2c' },             
+                    { _id: client._id },             
                     { $addToSet: { clients: client._id } }
                 );
                 return client;
+            }
             throw new AuthenticationError('You need to be logged in!');
         },
         addGoals: async (parent, { goalText }, context) => {
-            const goal = await Goal.create({ goalText })
-            await Client.findOneAndUpdate(
-                { _id: '6160a5fe8c20660b9bd7165c'},
-                { $addToSet: { goals: goal._id } }
-            );
-            return goal;
+            if (context.user) {
+                const goal = await Goal.create({ goalText })
+                await Client.findOneAndUpdate(
+                    { _id: goal._id },
+                    { $addToSet: { goals: goal._id } }
+                );
+                return goal;
+            }
+            throw new AuthenticationError('You need to be logged in!');
         },
     }
     

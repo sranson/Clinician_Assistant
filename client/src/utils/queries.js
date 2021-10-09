@@ -19,3 +19,14 @@ export const QUERY_ME = gql`
  }
 `
 
+export const QUERY_ALL_PCPS = gql`
+query allPCPs{
+  pcps{
+    pcpFirstName
+    pcpLastName
+    pcpNPI
+    pcpPhoneNumber
+    pcpFaxNumber
+  }
+}
+`;

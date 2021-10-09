@@ -13,9 +13,9 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg">
         <div>
           <Link className="text-light" to="/">
-            <h1 className="m-0">SOAPY</h1>
+            <h1 className="m-0">Clinician Assistant</h1>
           </Link>
-          <p className="m-0">Documentation Tool for SLPs</p>
+          <p className="m-0">Documentation Tool for therapists</p>
         </div>
         <div>
           {Auth.loggedIn() ? (

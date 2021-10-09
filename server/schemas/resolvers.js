@@ -47,7 +47,6 @@ const resolvers = {
                 throw new AuthenticationError('Incorrect credentials');
             }
             const token = signToken(user);
-            
             return { token, user };
         },
         addClient: async (parent, { firstName, lastName, DOB, goals }, context) => {
@@ -60,7 +59,7 @@ const resolvers = {
                 });
 
                 await User.findOneAndUpdate(
-                    { _id: client._id },             
+                    { _id: context.user._id },             
                     { $addToSet: { clients: client._id } }
                 );
                 return client;

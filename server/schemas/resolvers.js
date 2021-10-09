@@ -52,9 +52,9 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addClient: async (parent, {firstName, lastName, DOB, goals, insuranceId, payorSource, serviceStartTime,serviceEndTime,POC_start_date,POC_end_date}, context) => {
+        addClient: async (parent, {firstName, lastName, DOB, goals, insuranceId, payorSource, PCP, serviceStartTime,serviceEndTime,POC_start_date,POC_end_date}, context) => {
             if (context.user) {
-                const client = await Client.create({firstName,lastName,DOB,goals,insuranceId,payorSource,serviceStartTime,serviceEndTime,POC_start_date,POC_end_date});
+                const client = await Client.create({firstName,lastName,DOB,goals,insuranceId,payorSource,PCP,serviceStartTime,serviceEndTime,POC_start_date,POC_end_date});
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },             

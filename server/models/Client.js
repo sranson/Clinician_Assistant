@@ -25,7 +25,7 @@ const clientSchema = new Schema({
     payorSource: {
         type: String
     },
-    pcp: {
+    PCP: {
         type: Schema.Types.ObjectId,
         ref: 'PCP'
     },

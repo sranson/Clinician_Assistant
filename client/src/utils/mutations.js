@@ -31,35 +31,17 @@ mutation login($email: String!, $password: String!){
 `
 
 export const ADD_CLIENT = gql`
-mutation addClient(
-  $firstName: String!, 
-  $lastName: String!, 
-  $DOB: String!, 
-  $insuranceId: String, 
-  $payorSource: String, 
-  $serviceStartTime: String,
-  $serviceEndTime: String,
-  $POC_start_date: String
-  $POC_end_date: String,)
-    {addClient
-      (
-      firstName: $firstName, 
-      lastName: $lastName, 
-      DOB: $DOB, 
-      insuranceId: $insuranceId, 
-      payorSource: $payorSource, 
-      serviceStartTime: $serviceStartTime,
-      serviceEndTime: $serviceEndTime,
-      POC_start_date: $POC_start_date,
-      POC_end_date: $POC_end_date
-      ) 
-    {
+mutation addClient($firstName: String!, $lastName: String!, $DOB: String!, $insuranceId: String, $payorSource: String, $PCP: String,$serviceStartTime: String,$serviceEndTime: String,$POC_start_date: String$POC_end_date: String,)
+    {addClient(firstName: $firstName, lastName: $lastName, DOB: $DOB, insuranceId: $insuranceId, payorSource: $payorSource, PCP: $PCP,serviceStartTime: $serviceStartTime,serviceEndTime: $serviceEndTime,POC_start_date: $POC_start_date,POC_end_date: $POC_end_date) {
     _id
     firstName
     lastName
     DOB
     insuranceId
     payorSource
+		PCP {
+      _id
+    }
     serviceStartTime,
     serviceEndTime,
     POC_start_date,
@@ -71,6 +53,7 @@ mutation addClient(
 export const ADD_PCP = gql`
 mutation addPCP($pcpFirstName:String!, $pcpLastName: String!, $pcpNPI: String!, $pcpPhoneNumber:String, $pcpFaxNumber: String) {
   addPCP(pcpFirstName: $pcpFirstName, pcpLastName: $pcpLastName, pcpNPI: $pcpNPI, pcpPhoneNumber: $pcpPhoneNumber, pcpFaxNumber: $pcpFaxNumber) {
+    _id
     pcpFirstName
     pcpLastName
     pcpNPI

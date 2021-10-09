@@ -16,7 +16,7 @@ const typeDefs = gql`
     DOB: String!
     insuranceId: String
     payorSource: String
-    pcp: PCP
+    PCP: PCP
     serviceStartTime: String
     serviceEndTime: String
     POC_start_date: String
@@ -25,6 +25,7 @@ const typeDefs = gql`
   }
 
   type PCP {
+    _id: ID
     pcpFirstName: String
     pcpLastName: String
     pcpNPI: String
@@ -62,11 +63,13 @@ const typeDefs = gql`
         DOB: String!, 
         insuranceId: String, 
         payorSource: String, 
+        PCP:String
         serviceStartTime: String,
         serviceEndTime: String,
         POC_start_date: String
         POC_end_date: String
       ): Client
+
       addPCP(
         pcpFirstName: String!
         pcpLastName: String!
@@ -74,6 +77,7 @@ const typeDefs = gql`
         pcpPhoneNumber: String
         pcpFaxNumber: String
       ): PCP
+
     addGoals(goalText: String!): Goal
   }
 `;

@@ -25,20 +25,9 @@ const clientSchema = new Schema({
     payorSource: {
         type: String
     },
-    pcpFirstName: {
-        type: String
-    },
-    pcpLastName: {
-        type: String
-    },
-    pcpNPI: {
-        type: Number
-    },
-    pcpPhoneNumber: {
-        type: Number
-    },
-    pcpFaxNumber: {
-        type: Number
+    pcp: {
+        type: Schema.Types.ObjectId,
+        ref: 'PCP'
     },
     serviceStartTime: {
         type: String

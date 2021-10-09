@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Client, Goal } = require('../models');
+const { User, Client, Goal, PCP } = require('../models');
 const { signToken } = require('../utils/auth');
 
 
@@ -49,42 +49,9 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addClient: async (parent, 
-            { 
-                firstName, 
-                lastName, 
-                DOB, 
-                goals, 
-                insuranceId, 
-                payorSource, 
-                pcpFirstName, 
-                pcpLastName, 
-                pcpNPI, 
-                pcpPhoneNumber, 
-                pcpFaxNumber,
-                serviceStartTime,
-                serviceEndTime,
-                POC_start_date,
-                POC_end_date
-            }, context) => {
+        addClient: async (parent, {firstName, lastName, DOB, goals, insuranceId, payorSource, serviceStartTime,serviceEndTime,POC_start_date,POC_end_date}, context) => {
             if (context.user) {
-                const client = await Client.create({
-                    firstName,
-                    lastName,
-                    DOB,
-                    goals,
-                    insuranceId, 
-                    payorSource,
-                    pcpFirstName,
-                    pcpLastName,
-                    pcpNPI,
-                    pcpPhoneNumber,
-                    pcpFaxNumber,
-                    serviceStartTime,
-                    serviceEndTime,
-                    POC_start_date,
-                    POC_end_date
-                });
+                const client = await Client.create({firstName,lastName,DOB,goals,insuranceId,payorSource,serviceStartTime,serviceEndTime,POC_start_date,POC_end_date});
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },             
@@ -93,6 +60,10 @@ const resolvers = {
                 return client;
             }
             throw new AuthenticationError('You need to be logged in!');
+        },
+        addPCP: async (parent, { pcpFirstName,pcpLastName,pcpNPI,pcpPhoneNumber,pcpFaxNumber }, context) => {
+            const newPCP = await PCP.create({ pcpFirstName,pcpLastName,pcpNPI,pcpPhoneNumber,pcpFaxNumber });
+            return newPCP;
         },
         addGoals: async (parent, { goalText }, context) => {
             if (context.user) {

@@ -24,7 +24,6 @@ const NewClient = () => {
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
 
     const handleChange = (event) => {
-      console.log(formState);
         const { name, value } = event.target;
 
         setFormState({
@@ -35,8 +34,6 @@ const NewClient = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
-
         try {
             const { data } = await addClient({
                 variables: {...formState },
@@ -45,6 +42,10 @@ const NewClient = () => {
             console.error(e);
         }
     };
+
+    const addGoals = () => {
+      console.log('USER WANTS TO ADD GOALS TO CLIENT');
+    }
 
     return (
     <main className="flex-row justify-center mb-4">
@@ -58,7 +59,6 @@ const NewClient = () => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-
                 <div className="row">
                   <div className="col-md-6">
                     <input
@@ -224,17 +224,13 @@ const NewClient = () => {
                     </div>
               </div>
 
-
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
+                <button className="btn btn-block btn-primary" style={{ cursor: 'pointer' }} type="submit"> Submit</button>
               </form>
             )}
 
+                <div style={{ marginBottom: "2%", marginTop: "2%" }}>
+                  <button className="btn btn-info" onClick={addGoals}>Add Goals</button>
+                </div>
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

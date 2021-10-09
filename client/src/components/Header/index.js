@@ -15,7 +15,7 @@ const Header = () => {
           <Link className="text-light" to="/">
             <h1 className="m-0">Clinician Assistant</h1>
           </Link>
-          <p className="m-0">Documentation Tool for therapists</p>
+          <p className="m-0">Documentation Tool for Therapists</p>
         </div>
         <div>
           {Auth.loggedIn() ? (

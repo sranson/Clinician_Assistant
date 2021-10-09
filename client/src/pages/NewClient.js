@@ -5,6 +5,8 @@ import { ADD_CLIENT } from '../utils/mutations';
 import { QUERY_ALL_PCPS } from '../utils/queries'
 
 const NewClient = () => {
+const [docOptions, setDocOptions] = useState([])
+let pcpOptions = [];
 
 class Doctor {
   constructor(key, text, value){
@@ -14,15 +16,18 @@ class Doctor {
   }
 }
 
-const pcps = useQuery(QUERY_ALL_PCPS);
-let peds = pcps.data.pcps;
-let pcpOptions = [];
+const primaries = useQuery(QUERY_ALL_PCPS);
 
-peds.forEach((doc) => {
-  let docFullName = `${doc.pcpFirstName} ${doc.pcpLastName}`
-  let pediatrician = new Doctor(docFullName, docFullName, docFullName)
-  pcpOptions.push(pediatrician)
-})
+
+if (primaries !== undefined) {
+  // console.log(primaries.data?.pcps);
+  let peds = primaries.data.pcps;
+      peds.forEach((doc) => {
+      let docFullName = `${doc.pcpFirstName} ${doc.pcpLastName}`
+      let pediatrician = new Doctor(docFullName, docFullName, docFullName)
+      pcpOptions.push(pediatrician)
+    })
+}
 
 const PCPDropDown = () => (
   <Dropdown

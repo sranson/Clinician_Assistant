@@ -8,7 +8,12 @@ const NewClient = () => {
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
-        DOB: ''
+        DOB: '',
+        insuranceId: '',
+        payorSource: '',
+        pcpFirstName: '',
+        pcpLastName: '',
+        pcpNPI: '',
     });
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
 
@@ -68,6 +73,46 @@ const NewClient = () => {
                   name="DOB"
                   type="date"
                   value={formState.DOB}
+                  onChange={handleChange}
+                />
+                  <input
+                  className="form-input"
+                  placeholder="Insurance ID#"
+                  name="insuranceId"
+                  type="text"
+                  value={formState.insuranceId}
+                  onChange={handleChange}
+                />
+                  <input
+                  className="form-input"
+                  placeholder="Payor Source"
+                  name="payorSource"
+                  type="text"
+                  value={formState.payorSource}
+                  onChange={handleChange}
+                />
+                  <input
+                  className="form-input"
+                  placeholder="PCP First Name"
+                  name="pcpFirstName"
+                  type="text"
+                  value={formState.pcpFirstName}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="PCP Last Name"
+                  name="pcpLastName"
+                  type="text"
+                  value={formState.pcpLastName}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="PCP NPI"
+                  name="pcpNPI"
+                  type="text"
+                  value={formState.pcpNPI}
                   onChange={handleChange}
                 />
                 <button

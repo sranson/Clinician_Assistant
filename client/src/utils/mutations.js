@@ -31,12 +31,17 @@ mutation login($email: String!, $password: String!){
 `
 
 export const ADD_CLIENT = gql`
-mutation addClient($firstName: String!, $lastName: String!, $DOB: String!) {
-  addClient(firstName: $firstName, lastName: $lastName, DOB: $DOB) {
+mutation addClient($firstName: String!, $lastName: String!, $DOB: String!, $insuranceId: String, $payorSource: String, $pcpFirstName: String, $pcpLastName: String, $pcpNPI: String) {
+  addClient(firstName: $firstName, lastName: $lastName, DOB: $DOB, insuranceId: $insuranceId, payorSource: $payorSource, pcpFirstName: $pcpFirstName, pcpLastName:$pcpLastName, pcpNPI: $pcpNPI) {
     _id
     firstName
     lastName
     DOB
+    insuranceId
+    payorSource
+    pcpFirstName
+    pcpLastName
+    pcpNPI
   }
 }
 `

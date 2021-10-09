@@ -19,6 +19,21 @@ const clientSchema = new Schema({
         type: Date,
         required: "Client must have a DOB"
     },
+    insuranceId: {
+        type: Number
+    },
+    payorSource: {
+        type: String
+    },
+    pcpFirstName: {
+        type: String
+    },
+    pcpLastName: {
+        type: String
+    },
+    pcpNPI: {
+        type: Number
+    },
     goals: [
         {
             type: Schema.Types.ObjectId,

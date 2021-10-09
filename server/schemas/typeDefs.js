@@ -14,6 +14,11 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     DOB: String!
+    insuranceId: String
+    payorSource: String
+    pcpFirstName: String
+    pcpLastName: String
+    pcpNPI: String
     goals: [Goal]
   }
 
@@ -40,10 +45,11 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addClient(firstName: String!, lastName: String, DOB: String!): Client
+    addClient(firstName: String!, lastName: String, DOB: String!, insuranceId: String, payorSource: String, pcpFirstName: String, pcpLastName: String, pcpNPI: String): Client
     addGoals(goalText: String!): Goal
   }
 `;
 
 
 module.exports = typeDefs;
+

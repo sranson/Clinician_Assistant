@@ -1,10 +1,38 @@
 import React, { useState } from 'react';
-
-import { useMutation } from '@apollo/client';
+import { Dropdown } from 'semantic-ui-react'
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_CLIENT } from '../utils/mutations';
-
+import { QUERY_ALL_PCPS } from '../utils/queries'
 
 const NewClient = () => {
+
+class Doctor {
+  constructor(key, text, value){
+    this.key = key;
+    this.text = text;
+    this.value = value;
+  }
+}
+
+const pcps = useQuery(QUERY_ALL_PCPS);
+let peds = pcps.data.pcps;
+let pcpOptions = [];
+
+peds.forEach((doc) => {
+  let docFullName = `${doc.pcpFirstName} ${doc.pcpLastName}`
+  let pediatrician = new Doctor(docFullName, docFullName, docFullName)
+  pcpOptions.push(pediatrician)
+})
+
+const PCPDropDown = () => (
+  <Dropdown
+    placeholder='Select PCP'
+    fluid
+    selection
+    options={pcpOptions}
+  />
+)
+
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
@@ -118,6 +146,11 @@ const NewClient = () => {
                 </div>
               </div>
 
+                <div className="row">
+                    <div className="col-md-6">
+                      {<PCPDropDown />}
+                    </div>
+                </div>
 
               <div className="row">
                     <div className="col-md-6">

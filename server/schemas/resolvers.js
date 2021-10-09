@@ -16,8 +16,8 @@ const resolvers = {
             const params = username ? { username } : {};
             return Client.find(params)
         },
-        pcps: async (parent, args, context) => {
-            return PCP.find();
+        pcps: async () => {
+            return PCP.find({});
         },
         client: async (parent, { clientId }) => {
             return Client.findOne({ _id: clientId })

@@ -20,7 +20,7 @@ export const QUERY_ME = gql`
 `
 
 export const QUERY_ALL_PCPS = gql`
-query allPCPs{
+query pcps{
   pcps{
     pcpFirstName
     pcpLastName

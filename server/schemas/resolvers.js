@@ -49,7 +49,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addClient: async (parent, { firstName, lastName, DOB, goals, insuranceId, payorSource, pcpFirstName, pcpLastName, pcpNPI}, context) => {
+        addClient: async (parent, { firstName, lastName, DOB, goals, insuranceId, payorSource, pcpFirstName, pcpLastName, pcpNPI, pcpPhoneNumber, pcpFaxNumber}, context) => {
             if (context.user) {
                 const client = await Client.create({
                     firstName,
@@ -60,7 +60,9 @@ const resolvers = {
                     payorSource,
                     pcpFirstName,
                     pcpLastName,
-                    pcpNPI
+                    pcpNPI,
+                    pcpPhoneNumber,
+                    pcpFaxNumber
                 });
 
                 await User.findOneAndUpdate(

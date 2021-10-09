@@ -14,6 +14,8 @@ const NewClient = () => {
         pcpFirstName: '',
         pcpLastName: '',
         pcpNPI: '',
+        pcpPhoneNumber: '',
+        pcpFaxNumber: ''
     });
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
 
@@ -75,14 +77,18 @@ const NewClient = () => {
                   </div>
                 </div>
 
-                <label class="form-label">Client DOB:</label>
-                <input
-                  className="form-input"
-                  name="DOB"
-                  type="date"
-                  value={formState.DOB}
-                  onChange={handleChange}
-                />
+                <div className="row">
+                    <div className="col-md-6">
+                      <label class="form-label">Client DOB:</label>
+                      <input
+                        className="form-input"
+                        name="DOB"
+                        type="date"
+                        value={formState.DOB}
+                        onChange={handleChange}
+                      />
+                    </div>
+                </div>
 
                 <div className="row">
                   <div className="col-md-6">
@@ -118,29 +124,55 @@ const NewClient = () => {
                   onChange={handleChange}
                 />
                 </div>
+                  <div className="col-md-6">
+                    <input
+                      className="form-input"
+                      placeholder="PCP Last Name"
+                      name="pcpLastName"
+                      type="text"
+                      value={formState.pcpLastName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
 
-                <div className="col-md-6">
-                <input
+                <div className="row">
+                  <div className="col-md-6">
+                  <input
                   className="form-input"
-                  placeholder="PCP Last Name"
-                  name="pcpLastName"
+                  placeholder="PCP Phone Number"
+                  name="pcpPhoneNumber"
                   type="text"
-                  value={formState.pcpLastName}
+                  value={formState.pcpPhoneNumber}
                   onChange={handleChange}
                 />
                 </div>
+                  <div className="col-md-6">
+                    <input
+                      className="form-input"
+                      placeholder="PCP Fax Number"
+                      name="pcpFaxNumber"
+                      type="text"
+                      value={formState.pcpFaxNumber}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
 
-                <div className="col-md-6" style={{ marginLeft: "-1.5%" }}>
-                <input
-                  className="form-input"
-                  placeholder="PCP NPI"
-                  name="pcpNPI"
-                  type="text"
-                  value={formState.pcpNPI}
-                  onChange={handleChange}
-                />
+                <div className="row">
+                    <div className="col-md-6">
+                      <input
+                        className="form-input"
+                        placeholder="PCP NPI"
+                        name="pcpNPI"
+                        type="text"
+                        value={formState.pcpNPI}
+                        onChange={handleChange}
+                      />
+                    </div>
                 </div>
+
+
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}

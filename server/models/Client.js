@@ -34,6 +34,12 @@ const clientSchema = new Schema({
     pcpNPI: {
         type: Number
     },
+    pcpPhoneNumber: {
+        type: Number
+    },
+    pcpFaxNumber: {
+        type: Number
+    },
     goals: [
         {
             type: Schema.Types.ObjectId,

@@ -15,11 +15,16 @@ const NewClient = () => {
         pcpLastName: '',
         pcpNPI: '',
         pcpPhoneNumber: '',
-        pcpFaxNumber: ''
+        pcpFaxNumber: '',
+        serviceStartTime: '',
+        serviceEndTime: '',
+        POC_start_date: '',
+        POC_end_date: ''
     });
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
 
     const handleChange = (event) => {
+      console.log(formState);
         const { name, value } = event.target;
 
         setFormState({
@@ -79,7 +84,7 @@ const NewClient = () => {
 
                 <div className="row">
                     <div className="col-md-6">
-                      <label class="form-label">Client DOB:</label>
+                      <label className="form-label">Client DOB:</label>
                       <input
                         className="form-input"
                         name="DOB"
@@ -171,6 +176,53 @@ const NewClient = () => {
                       />
                     </div>
                 </div>
+
+              <div className="row">
+                    <div className="col-md-6">
+                      <label className="form-label">Plan of Care Start Date</label>
+                        <input
+                          className="form-input"
+                          name="POC_start_date"
+                          type="date"
+                          value={formState.POC_start_date}
+                          onChange={handleChange}
+                        />
+                    </div>
+
+                      <div className="col-md-6">
+                          <label className="form-label">Plan of Care End Date</label>
+                            <input
+                              className="form-input"
+                              name="POC_end_date"
+                              type="date"
+                              value={formState.POC_end_date}
+                              onChange={handleChange}
+                            />
+                      </div>
+                </div>
+
+              <div className="row">
+                    <div className="col-md-6">
+                      <label className="form-label">Session Start Time</label>
+                        <input
+                          className="form-input"
+                          name="serviceStartTime"
+                          type="time"
+                          value={formState.serviceStartTime}
+                          onChange={handleChange}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                      <label className="form-label">Session End Time</label>
+                        <input
+                          className="form-input"
+                          name="serviceEndTime"
+                          type="time"
+                          value={formState.serviceEndTime}
+                          onChange={handleChange}
+                        />
+                    </div>
+              </div>
 
 
                 <button

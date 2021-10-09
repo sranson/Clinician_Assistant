@@ -21,6 +21,10 @@ const typeDefs = gql`
     pcpNPI: String
     pcpPhoneNumber: String
     pcpFaxNumber: String
+    serviceStartTime: String
+    serviceEndTime: String
+    POC_start_date: String
+    POC_end_date: String
     goals: [Goal]
   }
 
@@ -58,6 +62,10 @@ const typeDefs = gql`
         pcpNPI: String, 
         pcpPhoneNumber: String, 
         pcpFaxNumber: String
+        serviceStartTime: String,
+        serviceEndTime: String,
+        POC_start_date: String
+        POC_end_date: String
       ): Client
     addGoals(goalText: String!): Goal
   }

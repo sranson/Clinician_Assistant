@@ -40,6 +40,18 @@ const clientSchema = new Schema({
     pcpFaxNumber: {
         type: Number
     },
+    serviceStartTime: {
+        type: String
+    },
+    serviceEndTime: {
+        type: String
+    },
+    POC_start_date: {
+        type: Date
+    },
+    POC_end_date: {
+        type: Date
+    },
     goals: [
         {
             type: Schema.Types.ObjectId,

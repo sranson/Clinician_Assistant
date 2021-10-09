@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import NewPCP from './pages/NewPCP';
 import NewClient from './pages/NewClient';
 import CreateSoap from './pages/CreateSOAP';
 
@@ -75,6 +76,9 @@ function App() {
                     </Route>
                     <Route exact path="/newClient">
                       <NewClient />
+                    </Route>
+                    <Route exact path="/newpcp">
+                      <NewPCP />
                     </Route>
                     <Route exact path="/createsoap">
                       <CreateSoap />

@@ -20,16 +20,19 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/dashboard">
+              <Link className="btn btn-md btn-info m-2" to="/dashboard">
                 Dashboard
               </Link>
-              <Link className="btn btn-lg btn-info m-2" to="/newClient">
+              <Link className="btn btn-md btn-info m-2" to="/newClient">
                 Add New Client
               </Link>
-              <Link className="btn btn-lg btn-info m-2" to="/createsoap">
+              <Link className="btn btn-md btn-info m-2" to="/newPCP">
+                Add New PCP
+              </Link>
+              <Link className="btn btn-md btn-info m-2" to="/createsoap">
                 Create SOAP Note
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              <button className="btn btn-md btn-light m-2" onClick={logout}>
                 Logout
               </button>
             </>

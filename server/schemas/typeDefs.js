@@ -48,7 +48,7 @@ const typeDefs = gql`
       user(username: String!): User
       clients(username: String!): [Client]
       client(clientId: ID!): Client
-      pcp(pcpId: ID!): PCP
+      pcps: [PCP]
       me: User
   }
 

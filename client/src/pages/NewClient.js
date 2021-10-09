@@ -118,64 +118,6 @@ const NewClient = () => {
                 </div>
               </div>
 
-                <div className="row">
-                  <div className="col-md-6">
-                  <input
-                  className="form-input"
-                  placeholder="PCP First Name"
-                  name="pcpFirstName"
-                  type="text"
-                  value={formState.pcpFirstName}
-                  onChange={handleChange}
-                />
-                </div>
-                  <div className="col-md-6">
-                    <input
-                      className="form-input"
-                      placeholder="PCP Last Name"
-                      name="pcpLastName"
-                      type="text"
-                      value={formState.pcpLastName}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                  <input
-                  className="form-input"
-                  placeholder="PCP Phone Number"
-                  name="pcpPhoneNumber"
-                  type="text"
-                  value={formState.pcpPhoneNumber}
-                  onChange={handleChange}
-                />
-                </div>
-                  <div className="col-md-6">
-                    <input
-                      className="form-input"
-                      placeholder="PCP Fax Number"
-                      name="pcpFaxNumber"
-                      type="text"
-                      value={formState.pcpFaxNumber}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-md-6">
-                      <input
-                        className="form-input"
-                        placeholder="PCP NPI"
-                        name="pcpNPI"
-                        type="text"
-                        value={formState.pcpNPI}
-                        onChange={handleChange}
-                      />
-                    </div>
-                </div>
 
               <div className="row">
                     <div className="col-md-6">

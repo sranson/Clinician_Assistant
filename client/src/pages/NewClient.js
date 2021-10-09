@@ -40,7 +40,7 @@ const NewClient = () => {
     };
 
     return (
-          <main className="flex-row justify-center mb-4">
+    <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Create New Client</h4>
@@ -51,46 +51,64 @@ const NewClient = () => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <input
+                      className="form-input"
+                      placeholder="Client First Name"
+                      name="firstName"
+                      type="text"
+                      value={formState.firstName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <input
+                      className="form-input"
+                      placeholder="Client Last Name"
+                      name="lastName"
+                      type="text"
+                      value={formState.lastName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <label class="form-label">Client DOB:</label>
                 <input
                   className="form-input"
-                  placeholder="Client First Name"
-                  name="firstName"
-                  type="text"
-                  value={formState.firstName}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Client Last Name"
-                  name="lastName"
-                  type="text"
-                  value={formState.lastName}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Client Last Name"
                   name="DOB"
                   type="date"
                   value={formState.DOB}
                   onChange={handleChange}
                 />
-                  <input
-                  className="form-input"
-                  placeholder="Insurance ID#"
-                  name="insuranceId"
-                  type="text"
-                  value={formState.insuranceId}
-                  onChange={handleChange}
-                />
-                  <input
-                  className="form-input"
-                  placeholder="Payor Source"
-                  name="payorSource"
-                  type="text"
-                  value={formState.payorSource}
-                  onChange={handleChange}
-                />
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <input
+                      className="form-input"
+                      placeholder="Insurance ID#"
+                      name="insuranceId"
+                      type="text"
+                      value={formState.insuranceId}
+                      onChange={handleChange}
+                    />
+                  </div>
+                <div className="col-md-6">
+                    <input
+                      className="form-input"
+                      placeholder="Payor Source"
+                      name="payorSource"
+                      type="text"
+                      value={formState.payorSource}
+                      onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+                <div className="row">
+                  <div className="col-md-6">
                   <input
                   className="form-input"
                   placeholder="PCP First Name"
@@ -99,6 +117,9 @@ const NewClient = () => {
                   value={formState.pcpFirstName}
                   onChange={handleChange}
                 />
+                </div>
+
+                <div className="col-md-6">
                 <input
                   className="form-input"
                   placeholder="PCP Last Name"
@@ -107,6 +128,10 @@ const NewClient = () => {
                   value={formState.pcpLastName}
                   onChange={handleChange}
                 />
+                </div>
+                </div>
+
+                <div className="col-md-6" style={{ marginLeft: "-1.5%" }}>
                 <input
                   className="form-input"
                   placeholder="PCP NPI"
@@ -115,6 +140,7 @@ const NewClient = () => {
                   value={formState.pcpNPI}
                   onChange={handleChange}
                 />
+                </div>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}

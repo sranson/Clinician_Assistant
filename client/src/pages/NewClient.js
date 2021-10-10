@@ -26,16 +26,13 @@ if (primaries.data !== undefined) {
     })
 }
 
-console.log(pcpOptions);
-
-
+    const [pcpState, setPcpState] = useState({ PCP: ""});
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
         DOB: '',
         insuranceId: '',
         payorSource: '',
-        PCP: '',
         serviceStartTime: '',
         serviceEndTime: '',
         POC_start_date: '',
@@ -46,6 +43,12 @@ console.log(pcpOptions);
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
 
     console.log(formState);
+    console.log(pcpState);
+
+    const setPcpValue = (val) => {
+      let value = val[0].value;
+      setPcpState({PCP: value});
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -60,7 +63,19 @@ console.log(pcpOptions);
         event.preventDefault();
         try {
             const { data } = await addClient({
-                variables: {...formState },
+              variables: {
+                firstName: formState.firstName,
+                lastName: formState.lastName,
+                DOB: formState.DOB,
+                insuranceId: formState.insuranceId,
+                payorSource: formState.payorSource,
+                PCP: pcpState.PCP,
+                serviceStartTime: formState.serviceStartTime,
+                serviceEndTime: formState.serviceEndTime,
+                POC_start_date: formState.POC_start_date,
+                POC_end_date: formState.POC_end_date
+              }
+                // variables: {...formState },
             });
         } catch (e) {
             console.error(e);
@@ -145,9 +160,11 @@ console.log(pcpOptions);
                 <div className="row">
                     <div className="col-md-6">
                         <Select
+                            placeholder="Client PCP"
                             options= {pcpOptions}
+                            onChange={(val) => setPcpValue(val)}
                             // onChange={(value) => console.log(value[0].value)}
-                            onChange={(value) => setFormState({ PCP: value[0].value })}   // This works!
+                            // onChange={(value) => setFormState({ PCP: value[0].value })}
                         />
                     </div>
                 </div>

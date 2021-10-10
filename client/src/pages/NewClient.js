@@ -42,8 +42,8 @@ if (primaries.data !== undefined) {
 
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
 
-    console.log(formState);
-    console.log(pcpState);
+    // console.log(formState);
+    // console.log(pcpState);
 
     const setPcpValue = (val) => {
       let value = val[0].value;
@@ -52,7 +52,6 @@ if (primaries.data !== undefined) {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-
         setFormState({
             ...formState,
             [name]: value,
@@ -75,7 +74,6 @@ if (primaries.data !== undefined) {
                 POC_start_date: formState.POC_start_date,
                 POC_end_date: formState.POC_end_date
               }
-                // variables: {...formState },
             });
         } catch (e) {
             console.error(e);
@@ -163,8 +161,6 @@ if (primaries.data !== undefined) {
                             placeholder="Client PCP"
                             options= {pcpOptions}
                             onChange={(val) => setPcpValue(val)}
-                            // onChange={(value) => console.log(value[0].value)}
-                            // onChange={(value) => setFormState({ PCP: value[0].value })}
                         />
                     </div>
                 </div>
@@ -219,10 +215,10 @@ if (primaries.data !== undefined) {
                 <button className="btn btn-block btn-primary" style={{ cursor: 'pointer' }} type="submit"> Submit</button>
               </form>
             )}
-
+{/* 
                 <div style={{ marginBottom: "2%", marginTop: "2%" }}>
                   <button className="btn btn-info" onClick={addGoals}>Add Goals</button>
-                </div>
+                </div> */}
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

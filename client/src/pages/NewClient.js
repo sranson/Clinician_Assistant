@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Dropdown } from 'semantic-ui-react'
 import { useMutation, useQuery } from '@apollo/client';
+import Select from 'react-dropdown-select';
 import { ADD_CLIENT } from '../utils/mutations';
 import { QUERY_ALL_PCPS } from '../utils/queries'
 
@@ -8,9 +8,9 @@ const NewClient = () => {
 const primaries = useQuery(QUERY_ALL_PCPS);
 
 class Doctor {
-  constructor(key, text, value){
+  constructor(key, label, value){
     this.key = key;
-    this.text = text;
+    this.label = label;
     this.value = value;
   }
 }
@@ -28,14 +28,6 @@ if (primaries.data !== undefined) {
 
 console.log(pcpOptions);
 
-const PCPDropDown = () => (
-  <Dropdown
-    placeholder='Select PCP'
-    fluid
-    selection
-    options={pcpOptions}
-  />
-)
 
     const [formState, setFormState] = useState({
         firstName: '',
@@ -43,17 +35,17 @@ const PCPDropDown = () => (
         DOB: '',
         insuranceId: '',
         payorSource: '',
-        pcpFirstName: '',
-        pcpLastName: '',
-        pcpNPI: '',
-        pcpPhoneNumber: '',
-        pcpFaxNumber: '',
+        PCP: '',
         serviceStartTime: '',
         serviceEndTime: '',
         POC_start_date: '',
         POC_end_date: ''
     });
+
+
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
+
+    console.log(formState);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -152,7 +144,11 @@ const PCPDropDown = () => (
 
                 <div className="row">
                     <div className="col-md-6">
-                      {<PCPDropDown />}
+                        <Select
+                            options= {pcpOptions}
+                            // onChange={(value) => console.log(value[0].value)}
+                            onChange={(value) => setFormState({ PCP: value[0].value })}   // This works!
+                        />
                     </div>
                 </div>
 

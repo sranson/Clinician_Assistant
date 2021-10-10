@@ -21,10 +21,12 @@ if (primaries.data !== undefined) {
   let peds = primaries.data?.pcps;
       peds.forEach((doc) => {
       let docFullName = `${doc.pcpFirstName} ${doc.pcpLastName}`
-      let pediatrician = new Doctor(docFullName, docFullName, docFullName)
+      let pediatrician = new Doctor(doc._id, docFullName, doc._id)
       pcpOptions.push(pediatrician)
     })
 }
+
+console.log(pcpOptions);
 
 const PCPDropDown = () => (
   <Dropdown

@@ -3,6 +3,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import Select from 'react-dropdown-select';
 import { ADD_CLIENT } from '../utils/mutations';
 import { QUERY_ALL_PCPS } from '../utils/queries'
+import CreateGoal from '../components/CreateGoal';
 
 const NewClient = () => {
 const primaries = useQuery(QUERY_ALL_PCPS);
@@ -27,6 +28,7 @@ if (primaries.data !== undefined) {
 }
 
     const [pcpState, setPcpState] = useState({ PCP: ""});
+    const [showGoalInput, setShowGoalInput] = useState(false);
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
@@ -36,12 +38,11 @@ if (primaries.data !== undefined) {
         serviceStartTime: '',
         serviceEndTime: '',
         POC_start_date: '',
-        POC_end_date: ''
+        POC_end_date: '',
     });
 
 
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
-
     // console.log(formState);
     // console.log(pcpState);
 
@@ -81,8 +82,9 @@ if (primaries.data !== undefined) {
     };
 
     const addGoals = () => {
-      console.log('USER WANTS TO ADD GOALS TO CLIENT');
-    }
+      console.log('CLICKED!');
+      setShowGoalInput(true)
+    };
 
     return (
     <main className="flex-row justify-center mb-4">
@@ -212,13 +214,66 @@ if (primaries.data !== undefined) {
                     </div>
               </div>
 
+
+              {/* GOAL #1 */}
+              <div className="row">
+                  <div className="col-md-12">
+                    <label>Goal #1:</label>
+                    <input
+                      className="form-input"
+                      placeholder="The client will...."
+                      name="goal1"
+                      type="text"
+                      value={formState.goal1}
+                      onChange={handleChange}
+                    />
+                  </div>
+              </div>
+
+            {/* GOAL #2 */}
+              <div className="row">
+                  <div className="col-md-12">
+                    <label>Goal #2:</label>
+                    <input
+                      className="form-input"
+                      placeholder="The client will...."
+                      name="goal2"
+                      type="text"
+                      value={formState.goal2}
+                      onChange={handleChange}
+                    />
+                  </div>
+              </div>
+
+              {/* GOAL #3 */}
+              <div className="row">
+                  <div className="col-md-12">
+                    <label>Goal #3:</label>
+                    <input
+                      className="form-input"
+                      placeholder="The client will...."
+                      name="goal3"
+                      type="text"
+                      value={formState.goal3}
+                      onChange={handleChange}
+                    />
+                  </div>
+              </div>
+
                 <button className="btn btn-block btn-primary" style={{ cursor: 'pointer' }} type="submit"> Submit</button>
               </form>
             )}
-{/* 
-                <div style={{ marginBottom: "2%", marginTop: "2%" }}>
-                  <button className="btn btn-info" onClick={addGoals}>Add Goals</button>
+
+                {/* ADD GOALS BUTTON */}
+                {/* <div style={{ marginBottom: "2%", marginTop: "2%" }}>
+                  <button 
+                    className="btn btn-info" 
+                    onClick={addGoals}
+                  >
+                    Add Goals
+                  </button>
                 </div> */}
+
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

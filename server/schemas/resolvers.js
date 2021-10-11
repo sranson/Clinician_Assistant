@@ -7,24 +7,25 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find().populate('clients');
+            return User.find().populate('clients').populate('goals');
         },
         user: async (parent, { username }) => {
-            return Client.findOne({ username }).populate('clients');
+            return Client.findOne({ username }).populate('clients').populate('goals');
         },
         clients: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Client.find(params)
+            return Client.find(params).populate('goals');
         },
         pcps: async () => {
             return PCP.find({});
         },
         client: async (parent, { clientId }) => {
-            return Client.findOne({ _id: clientId })
+            return Client.findOne({ _id: clientId }).populate('goals')
         },
+        // CREATE QUERY FOR GOALS SO THAT WHEN I SEARCH FOR A CLIENT, THE GOALS/ GOAL TEXT SHOWS
         me: async (parent, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('clients');
+                return User.findOne({ _id: context.user._id }).populate('clients').populate('goals');
             }
             throw new AuthenticationError('You need to be logged in!');
         },
@@ -82,16 +83,17 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        addGoals: async (parent, { goalText }, context) => {
-            if (context.user) {
+        addGoals: async (parent, { clientId, goalText }, context) => {
+            // if (context.user) {
                 const goal = await Goal.create({ goalText })
+
                 await Client.findOneAndUpdate(
-                    { _id: goal._id },
+                    { _id: clientId },
                     { $addToSet: { goals: goal._id } }
                 );
                 return goal;
-            }
-            throw new AuthenticationError('You need to be logged in!');
+            // }
+            // throw new AuthenticationError('You need to be logged in!');
         },
     }
     

@@ -35,7 +35,7 @@ const typeDefs = gql`
 
   type Goal {
     _id: ID
-    goalText: String!
+    goalText: String
   }
 
   type Auth {
@@ -49,6 +49,7 @@ const typeDefs = gql`
       user(username: String!): User
       clients(username: String!): [Client]
       client(clientId: ID!): Client
+      goals(clientId: ID!): Goal
       pcps: [PCP]
       me: User
   }
@@ -68,6 +69,7 @@ const typeDefs = gql`
         serviceEndTime: String,
         POC_start_date: String
         POC_end_date: String
+        Goals: String
       ): Client
 
       addPCP(
@@ -80,7 +82,7 @@ const typeDefs = gql`
     
       removeClient(clientId: ID!): Client
 
-    addGoals(goalText: String!): Goal
+    addGoals(clientId:ID!, goalText:String!): Goal
   }
 `;
 

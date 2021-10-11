@@ -11,9 +11,9 @@ const typeDefs = gql`
 
   type Client {
     _id: ID
-    firstName: String!
-    lastName: String!
-    DOB: String!
+    firstName: String
+    lastName: String
+    DOB: String
     insuranceId: String
     payorSource: String
     PCP: PCP
@@ -77,6 +77,8 @@ const typeDefs = gql`
         pcpPhoneNumber: String
         pcpFaxNumber: String
       ): PCP
+    
+      removeClient(clientId: ID!): Client
 
     addGoals(goalText: String!): Goal
   }

@@ -68,6 +68,20 @@ const resolvers = {
             const newPCP = await PCP.create({ pcpFirstName,pcpLastName,pcpNPI,pcpPhoneNumber,pcpFaxNumber });
             return newPCP;
         },
+        removeClient: async (parent, { clientId }, context) => {
+            if (context.user) {
+                const client = await Client.findOneAndDelete({
+                _id: clientId
+            });
+                await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { clients: clientId } }
+            );
+
+                return client;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
         addGoals: async (parent, { goalText }, context) => {
             if (context.user) {
                 const goal = await Goal.create({ goalText })

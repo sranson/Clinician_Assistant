@@ -71,3 +71,14 @@ mutation addGoal($goalText: String!) {
   }
 }
 `
+
+
+export const REMOVE_CLIENT = gql`
+mutation removeClient($clientId:ID!) {
+  removeClient(clientId:$clientId) {
+	_id
+  firstName
+  lastName
+  }
+}
+`;

@@ -46,10 +46,9 @@ const typeDefs = gql`
 
   type Query {
       users: [User]
-      user(username: String!): User
-      clients(username: String!): [Client]
-      client(clientId: ID!): Client
-      goals(clientId: ID!): Goal
+      user(userId: ID!): User
+      clients(userId: ID!): User
+      goals(clientId: ID): Client
       pcps: [PCP]
       me: User
   }
@@ -69,8 +68,9 @@ const typeDefs = gql`
         serviceEndTime: String,
         POC_start_date: String
         POC_end_date: String
-        Goals: String
       ): Client
+
+      addGoals(clientId: ID, goalText: String): Goal
 
       addPCP(
         pcpFirstName: String!
@@ -81,8 +81,6 @@ const typeDefs = gql`
       ): PCP
     
       removeClient(clientId: ID!): Client
-
-    addGoals(clientId:ID!, goalText:String!): Goal
   }
 `;
 

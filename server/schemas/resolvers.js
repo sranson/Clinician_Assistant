@@ -9,20 +9,21 @@ const resolvers = {
         users: async () => {
             return User.find().populate('clients').populate('goals');
         },
-        user: async (parent, { username }) => {
-            return Client.findOne({ username }).populate('clients').populate('goals');
+        user: async (parent, { userId }) => {
+            const user = await User.findOne({ _id: userId }).populate('clients');
+            return user;
         },
-        clients: async (parent, { username }) => {
-            const params = username ? { username } : {};
-            return Client.find(params).populate('goals');
+        clients: async (parent, { userId }) => {
+            const clients = await User.findOne({ _id: userId }).populate('clients');
+            return clients;
+        },
+        goals: async(parent, { clientId }) => {
+            const goals = await Client.findOne({ _id: clientId }).populate('goals');
+            return goals;
         },
         pcps: async () => {
             return PCP.find({});
         },
-        client: async (parent, { clientId }) => {
-            return Client.findOne({ _id: clientId }).populate('goals')
-        },
-        // CREATE QUERY FOR GOALS SO THAT WHEN I SEARCH FOR A CLIENT, THE GOALS/ GOAL TEXT SHOWS
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate('clients').populate('goals');
@@ -65,6 +66,16 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
+        addGoals: async (parent, { clientId, goalText }, context) => {
+            const newGoal = await Goal.create({ goalText });
+
+            await Client.findOneAndUpdate(
+                { _id: clientId },
+                { $addToSet: { goals: newGoal } }
+            );
+            return newGoal;
+
+        },
         addPCP: async (parent, { pcpFirstName,pcpLastName,pcpNPI,pcpPhoneNumber,pcpFaxNumber }, context) => {
             const newPCP = await PCP.create({ pcpFirstName,pcpLastName,pcpNPI,pcpPhoneNumber,pcpFaxNumber });
             return newPCP;
@@ -82,18 +93,6 @@ const resolvers = {
                 return client;
             }
             throw new AuthenticationError('You need to be logged in!');
-        },
-        addGoals: async (parent, { clientId, goalText }, context) => {
-            // if (context.user) {
-                const goal = await Goal.create({ goalText })
-
-                await Client.findOneAndUpdate(
-                    { _id: clientId },
-                    { $addToSet: { goals: goal._id } }
-                );
-                return goal;
-            // }
-            // throw new AuthenticationError('You need to be logged in!');
         },
     }
     

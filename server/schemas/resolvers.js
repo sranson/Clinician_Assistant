@@ -13,8 +13,8 @@ const resolvers = {
             const user = await User.findOne({ _id: userId }).populate('clients');
             return user;
         },
-        clients: async (parent, { userId }) => {
-            const clients = await User.findOne({ _id: userId }).populate('clients');
+        clients: async (parent, args, context) => {
+            const clients = await User.findOne({ _id: context.user._id }).populate('clients');
             return clients;
         },
         goals: async(parent, { clientId }) => {
@@ -25,10 +25,10 @@ const resolvers = {
             return PCP.find({});
         },
         me: async (parent, args, context) => {
-            if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('clients').populate('goals');
-            }
-            throw new AuthenticationError('You need to be logged in!');
+            // if (context.user) {
+                return User.findOne({ _id: "616dccc9b7ad1107fc3cd313" }).populate('clients').populate('goals');
+            // }
+            // throw new AuthenticationError('You need to be logged in!');
         },
     },
 

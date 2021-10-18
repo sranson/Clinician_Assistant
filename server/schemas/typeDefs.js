@@ -47,7 +47,7 @@ const typeDefs = gql`
   type Query {
       users: [User]
       user(userId: ID!): User
-      clients(userId: ID!): User
+      clients: User
       goals(clientId: ID): Client
       pcps: [PCP]
       me: User

@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME } from '../utils/queries';
+import Moment from 'react-moment';
+import 'moment-timezone';
+import { QUERY_THERAPIST_CLIENTS } from '../utils/queries';
 
 const Dashboard = () => {
-    const { data } = useQuery(QUERY_ME);
-    const clients = data?.me.clients || [];
-    // console.log(clients);
+    const { data } = useQuery(QUERY_THERAPIST_CLIENTS);
+    const clientArray = data?.clients.clients;
+    // console.log(clientArray);
 
-    clients.forEach((cl) => {
-        console.log(cl.firstName, cl.lastName);
-    })
+    if (clientArray) {
+        clientArray.forEach((cl) => {
+            let firstName = cl.firstName;
+            let lastName = cl.lastName;
+            let DOB = cl.DOB;
+            // let insuranceId = cl.insuranceId;
+            // let payor = cl.payorSource
+            console.log(`${firstName} ${lastName} ${DOB}`);
+        })
+    }
 
     return (
         <div>

@@ -2,18 +2,12 @@ import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
   query me {
-    me{
-      _id
-      username
-      email
+    me {
       clients {
+        _id
         firstName
         lastName
         DOB
-        goals {
-          _id
-          goalText
-        }
       }
     }
   }
@@ -49,12 +43,15 @@ export const QUERY_SINGLE_USER = gql`
 `;
 
 export const QUERY_THERAPIST_CLIENTS = gql`
-  query therapistClients($userId:ID!) {
-    clients(userId:$userId) {
+  query therapistClients{
+    clients{
       clients {
         _id
         firstName
         lastName
+        DOB
+        insuranceId
+        payorSource
       }
     }
   }

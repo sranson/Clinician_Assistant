@@ -11,16 +11,18 @@ const Dashboard = () => {
     if (clientArray !== undefined) {
         console.log(clientArray);
         return (
-            <div>
+            <div className="row">
                 {clientArray.map((cl) => {
                     return (
-                        <ClientCard 
-                            key={cl._id} 
-                            fullName={`${cl.firstName} ${cl.lastName}`} 
-                            DOB={cl.DOB} 
-                            memberId={cl.insuranceId} 
-                            payor={cl.payorSource} 
-                        />
+                            <div className="col-md-4">
+                                <ClientCard 
+                                    key={cl._id} 
+                                    fullName={`${cl.firstName} ${cl.lastName}`} 
+                                    DOB={cl.DOB} 
+                                    memberId={cl.insuranceId} 
+                                    payor={cl.payorSource} 
+                                />
+                            </div>
                     )
                 })}
             </div>

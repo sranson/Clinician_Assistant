@@ -4,7 +4,7 @@ import React from 'react';
 const ClientCard = (props) => {
     return (
         <div>
-            <div className="card" style={{width: "20rem", height: "18rem" ,marginLeft: "2%"}}>
+            <div className="card" style={{width: "20rem", height: "20rem" ,marginLeft: "2%"}}>
                 <div className="card-header">
                     <b>{props.fullName}</b>
                 </div>
@@ -23,7 +23,10 @@ const ClientCard = (props) => {
                     <div>
                         <button type="button" className="btn btn-lg btn-info m-2">New Note</button>
                     </div>
+                </div>
 
+                <div style={{ display: "flex", justifyContent: "center"}}>
+                    <button type="button" class="btn btn-md btn-danger">Delete Client</button>
                 </div>
             </div>
         </div>

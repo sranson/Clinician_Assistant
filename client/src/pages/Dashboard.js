@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
+import moment from 'moment';
 import { QUERY_THERAPIST_CLIENTS } from '../utils/queries';
 import ClientCard from '../components/ClientCard';
 
@@ -18,11 +19,12 @@ const Dashboard = () => {
                                 <ClientCard 
                                     key={cl._id} 
                                     fullName={`${cl.firstName} ${cl.lastName}`} 
-                                    DOB={cl.DOB} 
+                                    // DOB={cl.DOB}
+                                    DOB={moment(cl.DOB).format('L')} 
                                     memberId={cl.insuranceId} 
                                     payor={cl.payorSource} 
                                     sessionTime={`${cl.serviceStartTime} - ${cl.serviceEndTime}`}
-                                    POCdates={`${cl.POC_start_date} = ${cl.POC_end_date}`}
+                                    POCdates={`${moment(cl.POC_start_date).format('L')} - ${moment(cl.POC_end_date).format('L')}`}
                                 />
                             </div>
                     )

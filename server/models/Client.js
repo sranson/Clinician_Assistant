@@ -16,7 +16,7 @@ const clientSchema = new Schema({
         maxlength: 100
     },
     DOB: {
-        type: Date,
+        type: String,
         required: "Client must have a DOB"
     },
     insuranceId: {
@@ -36,10 +36,10 @@ const clientSchema = new Schema({
         type: String
     },
     POC_start_date: {
-        type: Date
+        type: String
     },
     POC_end_date: {
-        type: Date
+        type: String
     },
     goals: [
         {

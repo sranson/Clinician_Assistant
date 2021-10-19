@@ -24,6 +24,7 @@ const Dashboard = () => {
                                     payor={cl.payorSource} 
                                     sessionTime={`${moment(cl.serviceStartTime, 'HH:mm').format('hh:mm a')} - ${moment(cl.serviceEndTime, 'HH:mm').format('hh:mm a')}`}
                                     POCdates={`${moment(cl.POC_start_date).format('L')} - ${moment(cl.POC_end_date).format('L')}`}
+                                    authDates={`${moment(cl.authStart).format('L')} - ${moment(cl.authEnd).format('L')}`}
                                 />
                             </div>
                     )

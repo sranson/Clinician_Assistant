@@ -25,10 +25,10 @@ const resolvers = {
             return PCP.find({});
         },
         me: async (parent, args, context) => {
-            // if (context.user) {
-                return User.findOne({ _id: "616dccc9b7ad1107fc3cd313" }).populate('clients').populate('goals');
-            // }
-            // throw new AuthenticationError('You need to be logged in!');
+            if (context.user) {
+                return User.findOne({ _id: context.user._id }).populate('clients').populate('goals');
+            }
+            throw new AuthenticationError('You need to be logged in!');
         },
     },
 
@@ -54,9 +54,9 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addClient: async (parent, {firstName, lastName, DOB, goals, insuranceId, payorSource, PCP, serviceStartTime,serviceEndTime,POC_start_date,POC_end_date}, context) => {
+        addClient: async (parent, {firstName, lastName, DOB, goals, insuranceId, payorSource, PCP, serviceStartTime,serviceEndTime,POC_start_date,POC_end_date,authStart, authEnd}, context) => {
             if (context.user) {
-                const client = await Client.create({firstName,lastName,DOB,goals,insuranceId,payorSource,PCP,serviceStartTime,serviceEndTime,POC_start_date,POC_end_date});
+                const client = await Client.create({firstName,lastName,DOB,goals,insuranceId,payorSource,PCP,serviceStartTime,serviceEndTime,POC_start_date,POC_end_date, authStart, authEnd });
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },             

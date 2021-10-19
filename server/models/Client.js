@@ -41,6 +41,12 @@ const clientSchema = new Schema({
     POC_end_date: {
         type: String
     },
+    authStart: {
+        type: String
+    },
+    authEnd: {
+        type: String,
+    },
     goals: [
         {
             type: Schema.Types.ObjectId,

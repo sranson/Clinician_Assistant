@@ -39,11 +39,13 @@ if (primaries.data !== undefined) {
         serviceEndTime: '',
         POC_start_date: '',
         POC_end_date: '',
+        authStart: '',
+        authEnd: ''
     });
 
 
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
-    // console.log(formState);
+    console.log(formState);
     // console.log(pcpState);
 
     const setPcpValue = (val) => {
@@ -73,7 +75,9 @@ if (primaries.data !== undefined) {
                 serviceStartTime: formState.serviceStartTime,
                 serviceEndTime: formState.serviceEndTime,
                 POC_start_date: formState.POC_start_date,
-                POC_end_date: formState.POC_end_date
+                POC_end_date: formState.POC_end_date,
+                authStart: formState.authStart,
+                authEnd: formState.authEnd
               }
             });
         } catch (e) {
@@ -182,6 +186,30 @@ if (primaries.data !== undefined) {
                               name="POC_end_date"
                               type="date"
                               value={formState.POC_end_date}
+                              onChange={handleChange}
+                            />
+                      </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-md-6">
+                      <label className="form-label">Authorization Start Date</label>
+                        <input
+                          className="form-input"
+                          name="authStart"
+                          type="date"
+                          value={formState.authStart}
+                          onChange={handleChange}
+                        />
+                    </div>
+
+                      <div className="col-md-6">
+                          <label className="form-label">Authorization End Date</label>
+                            <input
+                              className="form-input"
+                              name="authEnd"
+                              type="date"
+                              value={formState.authEnd}
                               onChange={handleChange}
                             />
                       </div>

@@ -21,6 +21,8 @@ const typeDefs = gql`
     serviceEndTime: String
     POC_start_date: String
     POC_end_date: String
+    authStart: String
+    authEnd: String
     goals: [Goal]
   }
 
@@ -68,6 +70,8 @@ const typeDefs = gql`
         serviceEndTime: String,
         POC_start_date: String
         POC_end_date: String
+        authStart: String
+        authEnd: String
       ): Client
 
       addGoals(clientId: ID, goalText: String): Goal

@@ -26,6 +26,19 @@ export const QUERY_ALL_PCPS = gql`
   }
 `;
 
+export const QUERY_CLIENT_PCP = gql`
+query clientPCP($clientId: ID, $pcpId:ID) {
+  clientPCP(clientId: $clientId, pcpId: $pcpId) {
+    pcpFirstName
+    pcpLastName
+    pcpNPI
+    pcpPhoneNumber
+    pcpFaxNumber
+  }
+}
+`;
+
+
 export const QUERY_SINGLE_USER = gql`
   query singleUser($userId:ID!) {
     user(userId:$userId) {
@@ -56,6 +69,8 @@ export const QUERY_THERAPIST_CLIENTS = gql`
         serviceEndTime
         POC_start_date
         POC_end_date
+        authStart
+        authEnd
       }
     }
   }

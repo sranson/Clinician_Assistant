@@ -77,7 +77,8 @@ if (primaries.data !== undefined) {
                 POC_start_date: formState.POC_start_date,
                 POC_end_date: formState.POC_end_date,
                 authStart: formState.authStart,
-                authEnd: formState.authEnd
+                authEnd: formState.authEnd,
+                units: formState.units
               }
             });
         } catch (e) {
@@ -213,6 +214,19 @@ if (primaries.data !== undefined) {
                               onChange={handleChange}
                             />
                       </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-md-6">
+                      <label className="form-label"># of Approved Units</label>
+                      <input
+                        className="form-input"
+                        name="units"
+                        type="number"
+                        value={formState.units}
+                        onChange={handleChange}
+                      />
+                    </div>
                 </div>
 
               <div className="row">

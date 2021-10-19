@@ -54,9 +54,9 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addClient: async (parent, {firstName, lastName, DOB, goals, insuranceId, payorSource, PCP, serviceStartTime,serviceEndTime,POC_start_date,POC_end_date,authStart, authEnd}, context) => {
+        addClient: async (parent, {firstName, lastName, DOB, goals, insuranceId, payorSource, PCP, serviceStartTime,serviceEndTime,POC_start_date,POC_end_date,authStart, authEnd, units}, context) => {
             if (context.user) {
-                const client = await Client.create({firstName,lastName,DOB,goals,insuranceId,payorSource,PCP,serviceStartTime,serviceEndTime,POC_start_date,POC_end_date, authStart, authEnd });
+                const client = await Client.create({firstName,lastName,DOB,goals,insuranceId,payorSource,PCP,serviceStartTime,serviceEndTime,POC_start_date,POC_end_date, authStart, authEnd, units });
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },             

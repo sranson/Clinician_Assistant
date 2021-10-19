@@ -4,7 +4,7 @@ import React from 'react';
 const ClientCard = (props) => {
     return (
         <div>
-            <div className="card" style={{width: "24rem", height: "24rem" ,marginLeft: "2%"}}>
+            <div className="card" style={{width: "26rem", height: "26rem" ,marginLeft: "2%"}}>
                 <div className="card-header">
                     <b>{props.fullName}</b>
                 </div>
@@ -15,7 +15,8 @@ const ClientCard = (props) => {
                         <li className="list-group-item"><b>PCP:</b> Placeholder</li>
                         <li className="list-group-item"><b>Service Time:</b> {props.sessionTime}</li>
                         <li className="list-group-item"><b>POC Dates:</b> {props.POCdates}</li>
-                        <li className="list-group-item"><b>POC Dates:</b> {props.authDates}</li>
+                        <li className="list-group-item"><b>Auth Dates:</b> {props.authDates}</li>
+                        <li className="list-group-item"><b>Approved Units:</b> {props.units}</li>
                 </ul>
                 <div style={{ display: "flex", justifyContent: "space-evenly" }} className="row">
                     <div>

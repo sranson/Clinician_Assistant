@@ -71,6 +71,7 @@ export const QUERY_THERAPIST_CLIENTS = gql`
         POC_end_date
         authStart
         authEnd
+        units
       }
     }
   }

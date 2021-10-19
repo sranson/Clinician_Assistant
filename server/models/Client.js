@@ -47,6 +47,9 @@ const clientSchema = new Schema({
     authEnd: {
         type: String,
     },
+    units: {
+        type: Number
+    },
     goals: [
         {
             type: Schema.Types.ObjectId,

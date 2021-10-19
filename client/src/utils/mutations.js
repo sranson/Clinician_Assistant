@@ -33,10 +33,10 @@ export const LOGIN_USER = gql`
 export const ADD_CLIENT = gql`
   mutation addClient(
     $firstName: String!, $lastName: String!, $DOB: String!, $insuranceId: String, $payorSource: String, 
-    $PCP: String,$serviceStartTime: String, $serviceEndTime: String, $POC_start_date: String, $POC_end_date: String, $authStart: String, $authEnd: String
+    $PCP: String,$serviceStartTime: String, $serviceEndTime: String, $POC_start_date: String, $POC_end_date: String, $authStart: String, $authEnd: String, $units: String
   )
       {addClient(firstName: $firstName, lastName: $lastName, DOB: $DOB, insuranceId: $insuranceId, payorSource: $payorSource, 
-        PCP: $PCP, serviceStartTime: $serviceStartTime, serviceEndTime: $serviceEndTime, POC_start_date: $POC_start_date, POC_end_date: $POC_end_date, 
+        PCP: $PCP, serviceStartTime: $serviceStartTime, serviceEndTime: $serviceEndTime, POC_start_date: $POC_start_date, POC_end_date: $POC_end_date, units: $units
         authStart: $authStart, authEnd: $authEnd) {
       _id
       firstName
@@ -53,6 +53,7 @@ export const ADD_CLIENT = gql`
       POC_end_date
       authStart
       authEnd
+      units
     }
   }
 `

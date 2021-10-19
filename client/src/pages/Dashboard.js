@@ -15,7 +15,7 @@ const Dashboard = () => {
             <div className="row">
                 {clientArray.map((cl) => {
                     return (
-                            <div className="col-md-5">
+                            <div className="col-md-4">
                                 <ClientCard 
                                     key={cl._id} 
                                     fullName={`${cl.firstName} ${cl.lastName}`} 

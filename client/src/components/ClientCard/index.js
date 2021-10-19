@@ -4,7 +4,7 @@ import React from 'react';
 const ClientCard = (props) => {
     return (
         <div>
-            <div className="card" style={{width: "28rem"}}>
+            <div className="card" style={{width: "23rem", marginLeft: "3%"}}>
                 <div className="card-header">
                     {props.fullName}
                 </div>

@@ -15,15 +15,14 @@ const Dashboard = () => {
             <div className="row">
                 {clientArray.map((cl) => {
                     return (
-                            <div className="col-md-3">
+                            <div className="col-md-5">
                                 <ClientCard 
                                     key={cl._id} 
                                     fullName={`${cl.firstName} ${cl.lastName}`} 
-                                    // DOB={cl.DOB}
                                     DOB={moment(cl.DOB).format('L')} 
                                     memberId={cl.insuranceId} 
                                     payor={cl.payorSource} 
-                                    sessionTime={`${cl.serviceStartTime} - ${cl.serviceEndTime}`}
+                                    sessionTime={`${moment(cl.serviceStartTime, 'HH:mm').format('hh:mm a')} - ${moment(cl.serviceEndTime, 'HH:mm').format('hh:mm a')}`}
                                     POCdates={`${moment(cl.POC_start_date).format('L')} - ${moment(cl.POC_end_date).format('L')}`}
                                 />
                             </div>

@@ -52,6 +52,10 @@ export const QUERY_THERAPIST_CLIENTS = gql`
         DOB
         insuranceId
         payorSource
+        serviceStartTime
+        serviceEndTime
+        POC_start_date
+        POC_end_date
       }
     }
   }

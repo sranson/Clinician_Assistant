@@ -12,9 +12,14 @@ const Dashboard = () => {
     if (clientArray !== undefined) {
         console.log(clientArray);
         return (
-            <div className="row">
-                {clientArray.map((cl) => {
-                    return (
+            <div>
+                <div>
+                    <h1>Clients:</h1>
+                </div>
+
+                <div className="row" style={{ paddingTop: "3%"}}>
+                    {clientArray.map((cl) => {
+                        return (
                             <div className="col-md-4">
                                 <ClientCard 
                                     key={cl._id} 
@@ -28,18 +33,12 @@ const Dashboard = () => {
                                     units={cl.units}
                                 />
                             </div>
-                    )
-                })}
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <h1>Clients:</h1>
+                        )
+                    })}
+                </div>
             </div>
         )
     }
-
 }
 
 

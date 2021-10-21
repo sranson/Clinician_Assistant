@@ -45,7 +45,7 @@ if (primaries.data !== undefined) {
 
 
     const [addClient, { error, data }] = useMutation(ADD_CLIENT);
-    console.log(formState);
+    // console.log(formState);
     // console.log(pcpState);
 
     const setPcpValue = (val) => {

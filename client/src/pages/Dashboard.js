@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import moment from 'moment';
 import { QUERY_THERAPIST_CLIENTS } from '../utils/queries';
@@ -6,11 +6,27 @@ import ClientCard from '../components/ClientCard';
 
 const Dashboard = () => {
 
+    const [clientState, setClientState] = useState([]);
+
     const { data } = useQuery(QUERY_THERAPIST_CLIENTS);
     const clientArray = data?.clients.clients;
+
+    
+
+    useEffect(() => {
+        setClientState(clientArray);
+    }, [clientArray])
+
+    if (clientState === undefined) {
+        return (
+            <div>
+                <h1>Clients: </h1>
+            </div>
+        )
+    }
   
-    if (clientArray !== undefined) {
-        console.log(clientArray);
+    if (clientState !== undefined) {
+        console.log(clientState);
         return (
             <div>
                 <div>
@@ -18,7 +34,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="row" style={{ paddingTop: "3%"}}>
-                    {clientArray.map((cl) => {
+                    {clientState.map((cl) => {
                         return (
                             <div className="col-md-4">
                                 <ClientCard 

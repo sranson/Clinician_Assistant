@@ -90,3 +90,18 @@ export const QUERY_CLIENT_GOALS = gql`
     }
   }
 `;
+
+
+
+export const QUERY_SINGLE_PCP = gql`
+  query onePCP($pcpId: ID) {
+    onePCP(pcpId: $pcpId) {
+      _id
+      pcpFirstName
+      pcpLastName
+      pcpNPI
+      pcpPhoneNumber
+      pcpFaxNumber
+    }
+  }
+`;

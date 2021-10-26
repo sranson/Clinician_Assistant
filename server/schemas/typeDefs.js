@@ -54,6 +54,7 @@ const typeDefs = gql`
       goals(clientId: ID): Client
       pcps: [PCP]
       me: User
+      onePCP(pcpId: ID): PCP
   }
 
 

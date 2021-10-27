@@ -47,6 +47,7 @@ const Dashboard = () => {
                                     units={cl.units}
                                     PCP={cl.PCP._id}
                                     evalDate={moment(cl.evalDate).format('L')}
+                                    clientId={cl._id}
                                 />
                             </div>
                         )

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { REMOVE_CLIENT } from '../../utils/mutations'
 import { QUERY_SINGLE_PCP } from '../../utils/queries';
 
 
@@ -11,6 +12,22 @@ const ClientCard = (props) => {
     })
     let pcpFirst = clientPCP.data?.onePCP.pcpFirstName || '';
     let pcpLast = clientPCP.data?.onePCP.pcpLastName || '';
+
+
+    const [removeClient] = useMutation(REMOVE_CLIENT);
+    
+    const deleteClient = async () => {
+        try {
+            const removed = await removeClient({
+                variables: {
+                    clientId: props.clientId
+                }
+            })
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div>
@@ -40,7 +57,13 @@ const ClientCard = (props) => {
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "center", paddingTop: "0%" }}>
-                    <button type="button" class="btn btn-md btn-danger">Delete Client</button>
+                    <button 
+                        type="button" 
+                        class="btn btn-md btn-danger"
+                        onClick={deleteClient}
+                    >
+                        Delete Client
+                    </button>
                 </div>
             </div>
         </div>

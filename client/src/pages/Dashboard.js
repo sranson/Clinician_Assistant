@@ -46,6 +46,7 @@ const Dashboard = () => {
                                     authDates={`${moment(cl.authStart).format('L')} - ${moment(cl.authEnd).format('L')}`}
                                     units={cl.units}
                                     PCP={cl.PCP._id}
+                                    evalDate={moment(cl.evalDate).format('L')}
                                 />
                             </div>
                         )

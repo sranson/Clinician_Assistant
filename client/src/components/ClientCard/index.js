@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PCP } from '../../utils/queries';
 
@@ -24,6 +24,7 @@ const ClientCard = (props) => {
                         <li className="list-group-item"><b>Payor Source:</b> {props.payor}</li>
                         <li className="list-group-item"><b>PCP:</b> {`${pcpFirst} ${pcpLast}`}</li>
                         <li className="list-group-item"><b>Service Time:</b> {props.sessionTime}</li>
+                        <li className="list-group-item"><b>Evaluation:</b> {props.evalDate}</li>
                         <li className="list-group-item"><b>POC Dates:</b> {props.POCdates}</li>
                         <li className="list-group-item"><b>Auth Dates:</b> {props.authDates}</li>
                         <li className="list-group-item"><b>Approved Units:</b> {props.units}</li>
@@ -38,7 +39,7 @@ const ClientCard = (props) => {
                     </div>
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "center", paddingTop: "2%" }}>
+                <div style={{ display: "flex", justifyContent: "center", paddingTop: "0%" }}>
                     <button type="button" class="btn btn-md btn-danger">Delete Client</button>
                 </div>
             </div>

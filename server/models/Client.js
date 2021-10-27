@@ -50,6 +50,9 @@ const clientSchema = new Schema({
     units: {
         type: Number
     },
+    evalDate: {
+        type: String
+    },
     goals: [
         {
             type: Schema.Types.ObjectId,

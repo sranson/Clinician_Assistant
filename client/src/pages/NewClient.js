@@ -40,7 +40,9 @@ if (primaries.data !== undefined) {
         POC_start_date: '',
         POC_end_date: '',
         authStart: '',
-        authEnd: ''
+        authEnd: '',
+        units: '',
+        evalDate: ''
     });
 
 
@@ -78,7 +80,8 @@ if (primaries.data !== undefined) {
                 POC_end_date: formState.POC_end_date,
                 authStart: formState.authStart,
                 authEnd: formState.authEnd,
-                units: formState.units
+                units: formState.units,
+                evalDate: formState.evalDate
               }
             });
         } catch (e) {
@@ -217,6 +220,18 @@ if (primaries.data !== undefined) {
                 </div>
 
                 <div className="row">
+
+                      <div className="col-md-6">
+                        <label className="form-label">Evaluation Date</label>
+                          <input
+                            className="form-input"
+                            name="evalDate"
+                            type="date"
+                            value={formState.evalDate}
+                            onChange={handleChange}
+                          />
+                      </div>
+
                     <div className="col-md-6">
                       <label className="form-label"># of Approved Units</label>
                       <input

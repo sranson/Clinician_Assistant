@@ -24,6 +24,7 @@ const typeDefs = gql`
     authStart: String
     authEnd: String
     units: String
+    evalDate: String
     goals: [Goal]
   }
 
@@ -75,6 +76,7 @@ const typeDefs = gql`
         authStart: String
         authEnd: String
         units: String
+        evalDate: String
       ): Client
 
       addGoals(clientId: ID, goalText: String): Goal

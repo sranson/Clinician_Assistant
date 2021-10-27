@@ -72,6 +72,7 @@ export const QUERY_THERAPIST_CLIENTS = gql`
         authStart
         authEnd
         units
+        evalDate
         PCP {
           _id
         }

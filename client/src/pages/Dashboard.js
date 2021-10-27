@@ -11,8 +11,6 @@ const Dashboard = () => {
     const { data } = useQuery(QUERY_THERAPIST_CLIENTS);
     const clientArray = data?.clients.clients;
 
-    
-
     useEffect(() => {
         setClientState(clientArray);
     }, [clientArray])
@@ -26,7 +24,7 @@ const Dashboard = () => {
     }
   
     if (clientState !== undefined) {
-        console.log(clientState);
+        // console.log(clientState);
         return (
             <div>
                 <div>
@@ -47,6 +45,7 @@ const Dashboard = () => {
                                     POCdates={`${moment(cl.POC_start_date).format('L')} - ${moment(cl.POC_end_date).format('L')}`}
                                     authDates={`${moment(cl.authStart).format('L')} - ${moment(cl.authEnd).format('L')}`}
                                     units={cl.units}
+                                    PCP={cl.PCP._id}
                                 />
                             </div>
                         )

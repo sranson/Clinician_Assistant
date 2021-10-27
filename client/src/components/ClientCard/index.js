@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_PCP } from '../../utils/queries';
 
 
-const ClientCard = (props) => {
+const ClientCard = (props) => {    
+    // console.log(props);
+
+    const clientPCP = useQuery(QUERY_SINGLE_PCP, {
+         variables: { pcpId:  props.PCP },
+    })
+    let pcpFirst = clientPCP.data?.onePCP.pcpFirstName || '';
+    let pcpLast = clientPCP.data?.onePCP.pcpLastName || '';
+
     return (
         <div>
             <div className="card" style={{width: "26rem", height: "26rem" ,marginLeft: "2%"}}>
@@ -12,7 +22,7 @@ const ClientCard = (props) => {
                         <li className="list-group-item"><b>DOB:</b> {props.DOB}</li>
                         <li className="list-group-item"><b>Member ID:</b> {props.memberId}</li>
                         <li className="list-group-item"><b>Payor Source:</b> {props.payor}</li>
-                        <li className="list-group-item"><b>PCP:</b> Placeholder</li>
+                        <li className="list-group-item"><b>PCP:</b> {`${pcpFirst} ${pcpLast}`}</li>
                         <li className="list-group-item"><b>Service Time:</b> {props.sessionTime}</li>
                         <li className="list-group-item"><b>POC Dates:</b> {props.POCdates}</li>
                         <li className="list-group-item"><b>Auth Dates:</b> {props.authDates}</li>

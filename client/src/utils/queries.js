@@ -72,6 +72,9 @@ export const QUERY_THERAPIST_CLIENTS = gql`
         authStart
         authEnd
         units
+        PCP {
+          _id
+        }
       }
     }
   }

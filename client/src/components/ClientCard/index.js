@@ -6,7 +6,6 @@ import { QUERY_SINGLE_PCP } from '../../utils/queries';
 
 const ClientCard = (props) => {    
     // console.log(props);
-
     const clientPCP = useQuery(QUERY_SINGLE_PCP, {
          variables: { pcpId:  props.PCP },
     })

@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { REMOVE_CLIENT } from '../../utils/mutations'
 import { QUERY_SINGLE_PCP } from '../../utils/queries';
+import { BsTrash } from "react-icons/bs";
 
 
 const ClientCard = (props) => {    
@@ -30,9 +31,12 @@ const ClientCard = (props) => {
 
     return (
         <div>
-            <div className="card" style={{width: "27rem", height: "27rem" ,marginLeft: "2%"}}>
-                <div className="card-header">
+            <div className="card" style={{width: "24rem", height: "24rem" ,marginLeft: "2%"}}>
+                <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <b>{props.fullName}</b>
+                    <BsTrash 
+                    onClick={deleteClient}
+                    />
                 </div>
                 <ul className="list-group list-group-flush" style={{ paddingLeft: "2%", paddingTop: "4%" ,listStyleType: "none" }}>
                         <li className="list-group-item"><b>DOB:</b> {props.DOB}</li>
@@ -55,7 +59,7 @@ const ClientCard = (props) => {
                     </div>
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                {/* <div style={{ display: "flex", justifyContent: "center" }}>
                     <button 
                         type="button" 
                         class="btn btn-md btn-danger"
@@ -63,7 +67,7 @@ const ClientCard = (props) => {
                     >
                         Delete Client
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
     )

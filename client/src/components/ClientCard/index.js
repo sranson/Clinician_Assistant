@@ -30,7 +30,7 @@ const ClientCard = (props) => {
 
     return (
         <div>
-            <div className="card" style={{width: "26rem", height: "26rem" ,marginLeft: "2%"}}>
+            <div className="card" style={{width: "27rem", height: "27rem" ,marginLeft: "2%"}}>
                 <div className="card-header">
                     <b>{props.fullName}</b>
                 </div>
@@ -55,7 +55,7 @@ const ClientCard = (props) => {
                     </div>
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "center", paddingTop: "0%" }}>
+                <div style={{ display: "flex", justifyContent: "center" }}>
                     <button 
                         type="button" 
                         class="btn btn-md btn-danger"

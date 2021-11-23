@@ -126,19 +126,6 @@ if (primaries.data !== undefined) {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-6">
-                      <label className="form-label">Client DOB:</label>
-                      <input
-                        className="form-input"
-                        name="DOB"
-                        type="date"
-                        value={formState.DOB}
-                        onChange={handleChange}
-                      />
-                    </div>
-                </div>
-
-                <div className="row">
                   <div className="col-md-6">
                     <input
                       className="form-input"
@@ -161,10 +148,24 @@ if (primaries.data !== undefined) {
                 </div>
               </div>
 
+              <div className="row">
+                    <div className="col-md-6">
+                      <label className="form-label">Client DOB:</label>
+                      <input
+                        className="form-input"
+                        name="DOB"
+                        type="date"
+                        value={formState.DOB}
+                        onChange={handleChange}
+                      />
+                    </div>
+                </div>
+
                 <div className="row">
                     <div className="col-md-6">
+                    <label className="form-label">Pediatrician:</label>
                         <Select
-                            placeholder="Client PCP"
+                            placeholder="Pediatrician"
                             options= {pcpOptions}
                             onChange={(val) => setPcpValue(val)}
                         />

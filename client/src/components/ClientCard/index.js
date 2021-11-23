@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { REMOVE_CLIENT } from '../../utils/mutations'
 import { QUERY_SINGLE_PCP } from '../../utils/queries';
 import { BsTrash } from "react-icons/bs";
+
+const Modal = require('../Modal')
 
 const ClientCard = (props) => {    
     // console.log(props);
@@ -29,6 +30,11 @@ const ClientCard = (props) => {
         }
     }
 
+    // TO DO: HAVE A MODAL POP UP TO SHOW INPUT FIELD TO ENTER GOALS FOR THE CLIENT
+    const showModal = () => {
+        console.log(`Client: ${props.fullName} --- Member ID: ${props.memberId}`)
+    }
+
     return (
         <div>
             <div className="card" style={{width: "24rem", height: "24rem" ,marginLeft: "2%"}}>
@@ -51,25 +57,13 @@ const ClientCard = (props) => {
                 </ul>
                 <div style={{ display: "flex", justifyContent: "space-evenly" }} className="row">
                     <div>
-                        <Link to="/AddGoal"> 
-                            <button type="button" className="btn btn-lg btn-info m-2">Add Goals</button>
-                        </Link>
+                            <button type="button" className="btn btn-lg btn-info m-2" onClick={showModal}>Add Goals</button>
                     </div>
                     
                     <div>
                         <button type="button" className="btn btn-lg btn-info m-2">New Note</button>
                     </div>
                 </div>
-
-                {/* <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button 
-                        type="button" 
-                        class="btn btn-md btn-danger"
-                        onClick={deleteClient}
-                    >
-                        Delete Client
-                    </button>
-                </div> */}
             </div>
         </div>
     )

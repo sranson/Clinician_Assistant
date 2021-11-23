@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import NewPCP from './pages/NewPCP';
 import NewClient from './pages/NewClient';
 import CreateSoap from './pages/CreateSOAP';
+import AddGoal from '../src/pages/AddGoals'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -83,6 +84,9 @@ function App() {
                       </Route>
                       <Route exact path="/createsoap">
                         <CreateSoap />
+                      </Route>
+                      <Route exact path="/addGoal">
+                        <AddGoal />
                       </Route>
                   </div>
               </div>

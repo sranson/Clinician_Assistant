@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { REMOVE_CLIENT } from '../../utils/mutations'
 import { QUERY_SINGLE_PCP } from '../../utils/queries';
 import { BsTrash } from "react-icons/bs";
-
 
 const ClientCard = (props) => {    
     // console.log(props);
@@ -51,7 +51,9 @@ const ClientCard = (props) => {
                 </ul>
                 <div style={{ display: "flex", justifyContent: "space-evenly" }} className="row">
                     <div>
-                        <button type="button" className="btn btn-lg btn-info m-2">Add Goals</button>
+                        <Link to="/AddGoal"> 
+                            <button type="button" className="btn btn-lg btn-info m-2">Add Goals</button>
+                        </Link>
                     </div>
                     
                     <div>

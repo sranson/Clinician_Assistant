@@ -4,6 +4,7 @@ import moment from 'moment';
 import { QUERY_THERAPIST_CLIENTS } from '../utils/queries';
 import ClientCard from '../components/ClientCard';
 
+
 const Dashboard = () => {
 
     const [clientState, setClientState] = useState([]);

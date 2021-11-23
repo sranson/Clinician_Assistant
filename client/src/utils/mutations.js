@@ -73,7 +73,7 @@ export const ADD_PCP = gql`
 `;
 
 export const ADD_GOAL = gql`
-  mutation addGoal($clientId: ID!, $goalText: String!) {
+  mutation addGoals($clientId:ID!, $goalText: String) {
     addGoals(clientId: $clientId, goalText:$goalText) {
       _id
       goalText

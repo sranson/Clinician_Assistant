@@ -35,7 +35,7 @@ const ClientCard = (props) => {
 
     // TO DO: HAVE A MODAL POP UP TO SHOW INPUT FIELD TO ENTER GOALS FOR THE CLIENT
     const showModal = () => {
-        console.log(`Client: ${props.fullName} --- Member ID: ${props.memberId}`)
+        console.log(`Client: ${props.fullName} --- Client GraphQL ID: ${props.clientId}`)
     }
 
     return (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { REMOVE_CLIENT } from '../../utils/mutations'
 import { QUERY_SINGLE_PCP } from '../../utils/queries';
-import { BsTrash } from "react-icons/bs";
+import { BsTrash, BsFillPencilFill } from "react-icons/bs";
 
 const Modal = require('../Modal')
 
@@ -41,11 +41,10 @@ const ClientCard = (props) => {
     return (
         <div>
             <div className="card" style={{width: "24rem", height: "24rem" ,marginLeft: "2%"}}>
-                <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="card-header" style={{ display: 'flex', justifyContent: "space-between" }}>
                     <b>{props.fullName}</b>
-                    <BsTrash 
-                    onClick={deleteClient}
-                    />
+                        {/* <BsFillPencilFill /> */}
+                        <BsTrash onClick={deleteClient} />
                 </div>
                 <ul className="list-group list-group-flush" style={{ paddingLeft: "2%", paddingTop: "4%" ,listStyleType: "none" }}>
                         <li className="list-group-item"><b>DOB:</b> {props.DOB}</li>

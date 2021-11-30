@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { REMOVE_CLIENT } from '../../utils/mutations'
 import { QUERY_SINGLE_PCP } from '../../utils/queries';
@@ -8,6 +8,9 @@ const Modal = require('../Modal')
 
 const ClientCard = (props) => {    
     // console.log(props);
+
+    // const [goalModal, setgoalModal] = useState(False);
+
     const clientPCP = useQuery(QUERY_SINGLE_PCP, {
          variables: { pcpId:  props.PCP },
     })
